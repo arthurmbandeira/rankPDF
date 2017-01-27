@@ -17,27 +17,33 @@ import java.util.Set;
 public class RankPDFManager {
 
     List<Article> trainingList;
-    List<Article> testList;
+    List<Article> targetList;
     
-    public Set<String> belongs;
+    private Set<String> belongs;
     
     public RankPDFManager() {
         trainingList = new ArrayList();
-        testList = new ArrayList();
+        targetList = new ArrayList();
         belongs = new HashSet();
+    }
+
+    public Set<String> getBelongs() {
+        return belongs;
+    }
+
+    public void setBelongs(Set<String> belongs) {
+        this.belongs = belongs;
     }
     
     public void addTrainingArticle(Article a) {
         trainingList.add(a);
     }
     
-    public void addTestArticle(Article a) {
-        testList.add(a);
+    public void addTargetArticle(Article a) {
+        targetList.add(a);
     }
     
     public void addWord(String s){
         belongs.add(s);
     }
-    
-    
 }

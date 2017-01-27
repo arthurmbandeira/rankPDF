@@ -27,4 +27,8 @@ public class Article {
         localDict.put(t.termStr, t);
     }
     
+    public void getArticleSize(){
+        localDict.size();
+    }
+    
 }

@@ -29,7 +29,7 @@ public class RankPDFTest {
     
      @Test
      public void inputs() throws IOException, Exception {
-         String [] args = {"20", "-tr", "./samples/trainings", "-tg", "./samples/targets"};
+         String [] args = {"2", "-tr", "./samples/trainings", "-tg", "./samples/targets"};
          
          RankPDF.main(args);
     }
@@ -37,9 +37,9 @@ public class RankPDFTest {
     @Test
     public void testTrainingFiles() throws Exception {
         RankPDFManager manager = new RankPDFManager();
-        Op.tr.init("./samples/trainings", manager, 3);
+        Op.tr.init("./samples/trainings", manager, 2);
         
-        manager.belongs.forEach(word -> System.out.println(word));
+        manager.getBelongs().forEach(word -> System.out.println(word));
         
         assertEquals("oi", "oi");
     }

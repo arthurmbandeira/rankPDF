@@ -26,10 +26,11 @@ public enum Op {
                 for (File f : trainingFiles) {
                     Article art = new Article(f.getName());
                     PreProcessingPDF preProc = new PreProcessingPDF(f.getAbsolutePath());
-                    for (int i = 0; i < rk; i++) {
-                        Term t = preProc.getTerms().get(i);
-                        art.addTerm(t);
-                        manager.addWord(t.termStr);
+                    for (Term t : preProc.getTerms()){
+                        if (t.numof >= rk) {
+                            art.addTerm(t);
+                            manager.addWord(t.termStr);   
+                        }
                     }
                     manager.addTrainingArticle(art);
                 }
@@ -37,7 +38,6 @@ public enum Op {
             } else {
                 throw new Exception ("Parâmetro -tr errado.");
             }
-            System.out.println("Voce escolheu Train " + input);
         }
     }, tg{
         @Override
@@ -51,10 +51,11 @@ public enum Op {
                 for (File f : targetFiles) {
                     Article art = new Article(f.getName());
                     PreProcessingPDF preProc = new PreProcessingPDF(f.getAbsolutePath());
-                    for (int i = 0; i < rk; i++) {
-                        Term t = preProc.getTerms().get(i);
-                        art.addTerm(t);
-                        manager.addWord(t.termStr);
+                    for (Term t : preProc.getTerms()){
+                        if (t.numof >= rk){
+                            art.addTerm(t);
+                            manager.addWord(t.termStr);
+                        }
                     }
                     manager.addTargetArticle(art);
                 }
@@ -62,9 +63,8 @@ public enum Op {
             } else {
                 throw new Exception ("Parâmetro -tr errado.");
             }
-            System.out.println("Voce escolheu Target " + input);
         }
     };
     
-    public abstract void init(String input, RankPDFManager manager, int ranking) throws Exception;
+    public abstract void init(String input, RankPDFManager manager, int rank) throws Exception;
 }
