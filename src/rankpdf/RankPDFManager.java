@@ -80,7 +80,7 @@ public class RankPDFManager {
     public void initTrainings(String pathFolder, String pathFile, int rk) throws FileNotFoundException, IOException {
         File trainingFolder = new File(pathFolder);
         File config = new File(pathFile);
-        File[] targetFiles;
+        File[] trainingFiles;
         BufferedReader buffer;
 
         String line;
@@ -107,17 +107,11 @@ public class RankPDFManager {
             this.addTrainingArticle(art);
             s.close();
         }
-//                for (Article k : this.trainingList) {
-//                    for (Area g : k.areas) {
-//                        System.out.println(k.name + " - " + g.name);
-//                    }
-//                }
         buffer.close();
         if (trainingFolder.exists() && trainingFolder.isDirectory()) {
-            targetFiles = trainingFolder.listFiles();
+            trainingFiles = trainingFolder.listFiles();
             for (Article ar : this.trainingList) {
-                System.out.println(ar.name);
-                for (File f : targetFiles) {
+                for (File f : trainingFiles) {
                     if (f.getName().equals(ar.name)) {
                         PreProcessingPDF preProc = new PreProcessingPDF(f.getAbsolutePath());
                         for (Term t : preProc.getTerms()) {
@@ -132,31 +126,50 @@ public class RankPDFManager {
         }
     }
 
-    public void initTargets(String path, int rk) throws FileNotFoundException, IOException {
-        File samples = new File(path);
+    public void initTargets(String pathFolder, String pathFile,  int rk) throws FileNotFoundException, IOException {
+        File targetFolder = new File(pathFolder);
+        File config = new File(pathFile);
         File[] targetFiles;
         BufferedReader buffer;
 
-        for (File dir : samples.listFiles()) {
-            if (dir.getName().equals("targets.txt")) {
-                buffer = new BufferedReader(new FileReader(dir));
-            }
-            if (dir.getName().equals("targets")) {
-                if (dir.exists() && dir.isDirectory()) {
-                    targetFiles = dir.listFiles();
+        String line;
+        Scanner s;
 
-                    for (File f : targetFiles) {
-                        Article art = new Article(f.getName());
+        String delimiter = ",";
+        buffer = new BufferedReader(new FileReader(config));
+
+        while ((line = buffer.readLine()) != null) {
+            s = new Scanner(line);
+            s.useDelimiter(delimiter);
+
+            String n = s.next();
+            Article art = new Article(n);
+
+            while (s.hasNext()) {
+                String aux = s.next().trim();
+                for (Area a : this.areas) {
+                    if (aux.equals(a.id)) {
+                        art.addArea(a);
+                    }
+                }
+            }
+            this.addTargetArticle(art);
+            s.close();
+        }
+        buffer.close();
+        if (targetFolder.exists() && targetFolder.isDirectory()) {
+            targetFiles = targetFolder.listFiles();
+            for (Article ar : this.targetList) {
+                for (File f : targetFiles) {
+                    if (f.getName().equals(ar.name)) {
                         PreProcessingPDF preProc = new PreProcessingPDF(f.getAbsolutePath());
                         for (Term t : preProc.getTerms()) {
                             if (t.numof >= rk) {
-                                art.addTerm(t);
+                                ar.addTerm(t);
                                 this.addWord(t.termStr);
                             }
                         }
-                        this.addTargetArticle(art);
                     }
-
                 }
             }
         }

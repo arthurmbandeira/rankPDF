@@ -29,31 +29,13 @@ public class RankPDF {
         RankPDFManager manager = new RankPDFManager();
         int j = 0;
         int rank = Integer.parseInt(args[0]);
-        
-//        for (int i = 1; i < args.length; i+=2) {
-//            Op.valueOf(args[i].substring(1)).init(args[i+1], manager, rank);
-//        }
 
         manager.initAreas(args[1]);
         manager.initTrainings(args[2], args[3], rank);
+        manager.initTargets(args[4], args[5], rank);
         
         
         
-        
-        
-        
-        
-        
-        
-        
-//        PreProcessingPDF preProc = new PreProcessingPDF("../tests/PDFs/107.pdf");
-//        
-//        preProc.utils.printTerms(preProc);
-//        preProc.utils.printTermsInFile(preProc);
-//        preProc.utils.writePDFInfo(preProc);
-       
-//        System.out.println("jesus salva" + args[0]);
-//
 //        NeuralNetwork neuralNetwork;    
 //        neuralNetwork = new Perceptron(2,1);
 //        DataSet trainingSet = new DataSet(2,1);   
