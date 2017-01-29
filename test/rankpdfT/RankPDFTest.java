@@ -30,7 +30,7 @@ public class RankPDFTest {
     
      @Test
      public void inputs() throws IOException, Exception{
-         String [] args = {"2", "./samples/areas.txt", "./samples/"};
+         String [] args = {"2", "./samples/areas.txt", "./samples/trainings", "./samples/trainings.txt"};
          
          RankPDF.main(args);
     }

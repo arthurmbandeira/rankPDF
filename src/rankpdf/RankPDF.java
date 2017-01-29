@@ -35,7 +35,7 @@ public class RankPDF {
 //        }
 
         manager.initAreas(args[1]);
-        manager.initTrainings(args[2], rank);
+        manager.initTrainings(args[2], args[3], rank);
         
         
         
