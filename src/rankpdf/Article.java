@@ -7,6 +7,7 @@ package rankpdf;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import preprocessingpdf.Term;
 
@@ -18,9 +19,11 @@ public class Article {
 
     String name;
     Map<String, Term> localDict;
+    List<Area> areas;
     
     public Article(String name) {
         localDict = new HashMap(); 
+        areas = new ArrayList(); 
     }
     
     public void addTerm(Term t){
@@ -29,6 +32,16 @@ public class Article {
     
     public void getArticleSize(){
         localDict.size();
+    }
+    
+    public void printArticle(){
+        for (String k : localDict.keySet()){
+            System.out.println(localDict.get(k).termStr);
+        }
+    }
+    
+    public void addArea(Area a){
+        areas.add(a);
     }
     
 }

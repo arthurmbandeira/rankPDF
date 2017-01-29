@@ -1,0 +1,13 @@
+1-Applications and Expert Knowledge Intensive Systems
+2-Automatic Programming
+3-Deduction and Theorem Proving and Knowledge Processing
+4-Knowledge Representation Formalisms and Methods
+5-Programming Languages and Software
+6-Learning
+7-Natural Language Processing
+8-Problem Solving, Control Methods, and Search
+9-Robotics
+10-Vision and Scene Understanding
+11-Distributed Artificial Intelligence
+12-Intelligent Web Services and Semantic Web
+13-Knowledge Management

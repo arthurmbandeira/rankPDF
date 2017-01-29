@@ -30,9 +30,14 @@ public class RankPDF {
         int j = 0;
         int rank = Integer.parseInt(args[0]);
         
-        for (int i = 1; i < args.length; i+=2) {
-            Op.valueOf(args[i].substring(1)).init(args[i+1], manager, rank);
-        }
+//        for (int i = 1; i < args.length; i+=2) {
+//            Op.valueOf(args[i].substring(1)).init(args[i+1], manager, rank);
+//        }
+
+        manager.initAreas(args[1]);
+        manager.initTrainings(args[2], rank);
+        
+        
         
         
         
