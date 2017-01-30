@@ -13,8 +13,8 @@ import java.util.Scanner;
  */
 public class Area {
     
-    String name;
-    String id;
+    public String name;
+    public String id;
     
     public Area(String id, String name) {
         this.id = id;

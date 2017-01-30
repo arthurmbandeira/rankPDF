@@ -34,7 +34,14 @@ public class RankPDF {
         manager.initTrainings(args[2], args[3], rank);
         manager.initTargets(args[4], args[5], rank);
         
+//        System.out.println(manager.belongs.size());
+
+        manager.prepareTraining("jarvis.nnet");
+        manager.hitTargets();
+//        manager.hitTargets("jarvis.nnet");
         
+//        System.out.println(manager.areas.size());
+
         
 //        NeuralNetwork neuralNetwork;    
 //        neuralNetwork = new Perceptron(2,1);
