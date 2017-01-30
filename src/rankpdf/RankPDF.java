@@ -34,40 +34,9 @@ public class RankPDF {
         manager.initTrainings(args[2], args[3], rank);
         manager.initTargets(args[4], args[5], rank);
         
-//        System.out.println(manager.belongs.size());
-
         manager.prepareTraining("jarvis.nnet");
         manager.hitTargets();
 //        manager.hitTargets("jarvis.nnet");
-        
-//        System.out.println(manager.areas.size());
-
-        
-//        NeuralNetwork neuralNetwork;    
-//        neuralNetwork = new Perceptron(2,1);
-//        DataSet trainingSet = new DataSet(2,1);   
-//        trainingSet.addRow(new DataSetRow(new double[]{0, 0}, new double[]{0}));
-//        trainingSet.addRow(new DataSetRow(new double[]{0, 1}, new double[]{1}));
-//        trainingSet.addRow(new DataSetRow(new double[]{1, 0}, new double[]{1}));
-//        trainingSet.addRow(new DataSetRow(new double[]{1, 1}, new double[]{1}));
-//        
-//        neuralNetwork.learn(trainingSet);
-//        
-//        neuralNetwork.save("or_perceptron.nnet");
-//        
-//        // load the saved network
-//        NeuralNetwork redeNeural = NeuralNetwork.createFromFile("or_perceptron.nnet");
-//        // set network input
-//        redeNeural.setInput(0, 0);
-//        // calculate network
-//        redeNeural.calculate();
-//        // get network output
-//        double[] networkOutput = redeNeural.getOutput();
-//        
-//        for (double d : networkOutput){
-//            System.out.println(d);
-//            System.out.println(networkOutput.length);
-//        }
         
     }
     
